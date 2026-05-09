@@ -1,0 +1,6 @@
+spring.datasource.url=jdbc:mysql://localhost:3306/crm_clientes
+spring.datasource.username=root
+spring.datasource.password=SUA_SENHA
+
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.database-platform=org.hibernate.dialect.MySQLDialect
