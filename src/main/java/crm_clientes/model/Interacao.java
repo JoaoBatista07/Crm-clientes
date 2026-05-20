@@ -5,6 +5,7 @@ import crm_clientes.enums.TipoInteracao;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.validator.constraints.CodePointLength;
 
 import java.time.LocalDateTime;
@@ -20,13 +21,16 @@ public class Interacao {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID idInteracao;
 
+    @Setter
     @Column(name = "tipo_interacao", nullable = false, length = 50)
     @Enumerated(EnumType.STRING)
     private TipoInteracao tipoInteracao;
 
+    @Setter
     @Column(name = "descricao_interacao")
     private String descricaoInteracao;
 
+    @Setter
     @Column(name = "resultado_interacao", length = 50)
     @Enumerated(EnumType.STRING)
     private ResultadoInteracao resultadoInteracao;

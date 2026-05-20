@@ -57,6 +57,9 @@ public class EmpresaCliente {
     @OneToMany(mappedBy = "empresaCliente", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Interacao> interacoes;
 
+    @OneToMany(mappedBy = "empresaCliente", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Oportunidade> oportunidades;
+
     @PrePersist
     public void prePersist(){
         if (dataCriacaoEmpresa == null){

@@ -46,6 +46,9 @@ public class Usuario {
     @OneToMany(mappedBy = "idUsuario")
     private List<Interacao> interacoes;
 
+    @OneToMany(mappedBy = "idUsuario")
+    private List<Oportunidade> oportunidades;
+
     @PrePersist
     public void prePersist(){
         if ((!this.ativoUsuario)){
