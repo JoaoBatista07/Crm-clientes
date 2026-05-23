@@ -10,6 +10,7 @@ import lombok.Setter;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -45,13 +46,19 @@ public class Oportunidade {
     @Column(name = "data_atualizacao", nullable = false)
     private LocalDateTime dataAtualizacao;
 
-    @JoinColumn(name = "usuario")
+    @JoinColumn(name = "id_usuario", nullable = false)
     @ManyToOne
     private Usuario idUsuario;
 
-    @JoinColumn(name = "empresa_cliente")
     @ManyToOne
+    @JoinColumn(name = "id_empresa_cliente", nullable = false)
     private EmpresaCliente empresaCliente;
+
+    @OneToMany(mappedBy = "oportunidade", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ItemOportunidade> itensOportunidades;
+
+    @OneToOne(mappedBy = "oportunidade")
+    private Venda vendas;
 
     @PrePersist
     public void prePersist(){

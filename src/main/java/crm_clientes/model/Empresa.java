@@ -40,6 +40,9 @@ public class Empresa {
     @OneToMany(mappedBy = "idEmpresa")
     private List<EmpresaCliente> empresasClientes;
 
+    @OneToMany(mappedBy = "empresa")
+    private List<Venda> vendas;
+
     @PrePersist
     public void prePersist() {
         if (dataCriacao == null) {

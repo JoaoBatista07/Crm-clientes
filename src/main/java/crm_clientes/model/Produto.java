@@ -4,9 +4,11 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.apache.catalina.LifecycleState;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -40,6 +42,9 @@ public class Produto {
     @ManyToOne
     @JoinColumn(name = "empresa")
     private Empresa idEmpresa;
+
+    @OneToMany(mappedBy = "idProduto")
+    private List<ItemOportunidade> itens;
 
     @PrePersist
     public void prePersist(){
